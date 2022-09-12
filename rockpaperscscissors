@@ -1,0 +1,70 @@
+import time
+import random
+
+print ("Piatra foarfeca hartie: \n")
+time.sleep(1)
+
+
+print ("Alege: \n")
+
+print ("1. Piatra")
+print ("2. Foarfece")
+print ("3. Hartie")
+print ("4. EXIT \n")
+
+i=int(input("Alegeti un numar [1-4]: "))
+
+posibilitati=['Piatra', 'Foarfece', 'Hartie']
+
+choose=random.choice(posibilitati)
+
+continua=1
+
+while(continua==1):
+    if(choose==posibilitati[0] and i==1):
+        print ("Remiza!")
+        time.sleep(1)
+        break
+
+    elif(choose==posibilitati[1] and i==2):
+        print ("Remiza!")
+        time.sleep(1)
+        break
+
+    elif(choose==posibilitati[2] and i==3):
+        print ("Remiza!")
+        time.sleep(1)
+        break
+
+    elif(i==1 and choose==posibilitati[1]):
+        print ("Ai castigat!")
+        time.sleep(1)
+        break
+
+    elif(i==1 and choose==posibilitati[2]):
+        print ("Ai pierdut!")
+        time.sleep(1)
+        break
+
+    elif(i==2 and choose==posibilitati[0]):
+        print ("Ai pierdut!")
+        time.sleep(1)
+        break
+
+    elif(i==2 and choose==posibilitati[2]):
+        print ("Ai castigat!")
+        time.sleep(1)
+        break
+
+    elif(i==3 and choose==posibilitati[0]):
+        print ("Ai castigat!")
+        time.sleep(1)
+        break
+
+    elif(i==3 and choose==posibilitati[1]):
+        print ("Ai pierdut!")
+        time.sleep(1)
+        break
+
+    else:
+        continua+=1
