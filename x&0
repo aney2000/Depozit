@@ -1,0 +1,95 @@
+import os 
+import time 
+
+masa = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+jucator = 1 
+
+castig=1 
+remiza= -1 
+continuare= 0
+stop =1 
+
+joc= continuare
+
+x = 'X'
+
+def desen():
+    print(" %c | %c | %c " % (masa[1],masa[2],masa[3]))
+    print("___|___|___")
+    print(" %c | %c | %c " % (masa[4],masa[5],masa[6]))
+    print("___|___|___")
+    print(" %c | %c | %c " % (masa[7],masa[8],masa[9]))
+    
+def pozitie(x):
+    if(masa[x] == ' '):
+        return True
+    else: 
+        return False
+        
+def verificaCastig():
+    
+    global joc
+    
+    #orizontal
+    if(masa[1] == masa[2] and masa[2] == masa[3] and masa[1]!= ' '):
+        joc = castig 
+    elif(masa[4] == masa[5] and masa[5] == masa[6] and masa[4]!=' '):
+        joc = castig
+    elif(masa[7] == masa[8] and masa[8]== masa[9] and masa[7]!=' '):
+        joc= castig
+    
+    #vertical
+    elif(masa[1] == masa[4] and masa[4] == masa[7] and masa[1]!=' '):
+        joc = castig
+    elif(masa[2] == masa[5] and masa[5] == masa[8] and masa[2]!=' '):
+        joc = castig
+    elif(masa[3] == masa[6] and masa[6] == masa[9] and masa[3]!=' '):
+        joc = castig
+        
+    #oblic
+    elif(masa[1] == masa[5] and masa[5] == masa[9] and masa[1]!=' '):
+        joc = castig
+    elif(masa[3] == masa[5] and masa[5] == masa[7] and masa[3]!=' '):
+        joc = castig
+        
+    #remiza
+    
+    elif(masa[1]!=' ' and masa[2]!=' ' and masa[3]!=' ' and masa[4]!=' ' and masa[5]!=' ' and masa[6]!=' ' and masa[7]!=' ' and masa[8]!=' ' and masa[9]!= ' '):
+        joc=remiza
+    
+    else:
+        joc=continuare
+        
+print("Joc: ")
+print("Jucator 1 [X] --- Jucator 2 [O] \n")
+print()
+print()
+print("Joc in delurare...")
+time.sleep(3)
+while(joc == continuare):
+    os.system('cls')
+    desen()
+    if(jucator % 2 != 0):
+        print("Tura jucator 1: ")
+        x = 'X'
+    else: 
+        print("Tura jucator 2: ")
+        x = 'O'
+    
+    alege = int(input ("Alegeti o pozitie de la 1-9: "))
+    
+    if(pozitie(alege)):
+        masa[alege]= x
+        jucator+=1
+        verificaCastig()
+            
+os.system('cls')
+desen()
+if(joc==remiza):
+    print("Joc terminat! Remiza!")
+elif(joc==castig):
+    jucator-=1
+    if(jucator %2 !=0):
+        print("Jucator 1 castiga!")
+    else: 
+        print("Jucator 2 castiga!")
